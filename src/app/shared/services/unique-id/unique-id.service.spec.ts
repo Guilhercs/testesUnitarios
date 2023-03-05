@@ -22,9 +22,11 @@ describe(UniqueIdService.name, () => {
     expect(service.getNumberOfGenerateUniqueIds()).toBe(2);
   });
   it('should throw when called with empty', () => {
-    const emptyValues = [null, undefined, '']
+    const emptyValues = [null, undefined, '', '0', '1']
     emptyValues.forEach(element => {
-      expect(() => service.generateUniqueIdWithPrefix(element)).toThrow()
+      expect(() => service.generateUniqueIdWithPrefix(element))
+      .withContext(`Empty value: ${element}`) //consegue identificar o valor que faz o teste falhar
+      .toThrow()
     });
   })
 });
