@@ -15,7 +15,7 @@ export class LikeWidgetComponent implements OnInit {
   constructor(private UniqueIdService: UniqueIdService) {}
 
   ngOnInit(): void {
-    if(this.id) {
+    if(!this.id) {
       this.id = this.UniqueIdService.generateUniqueIdWithPrefix('like-widget')
     }
   }
